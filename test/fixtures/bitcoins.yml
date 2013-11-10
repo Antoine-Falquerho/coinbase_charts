@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buy_price: 1
+  sell_price: 1
+
+two:
+  buy_price: 1
+  sell_price: 1
