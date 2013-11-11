@@ -25,18 +25,15 @@ function drawChart() {
 				<th>Sell price</th>
 			</tr>
 			<% @bitcoins.reverse.each do |bitcoin| %>
-			<% time_to_buy = 'success' if bitcoin.id == @to_buy.id %>
-			<% time_to_buy = 'warning' if bitcoin.id == @to_sell.id %>
-			<tr class="<%= time_to_buy %>">
+			<tr>
 				<td><%= bitcoin.created_at.strftime("%b %e at %l:%M %p") %></td>
-				<td>$<%= bitcoin.buy_price.to_f / 100 %></td>
-				<td>$<%= bitcoin.sell_price.to_f / 100 %></td>
+				<td style="<%= 'background-color:#DFF0D8;' if bitcoin.id == @to_buy.id %>">$<%= bitcoin.buy_price.to_f / 100 %></td>
+				<td style="<%= 'background-color:#DFF0D8;' if bitcoin.id == @to_sell.id %>">$<%= bitcoin.sell_price.to_f / 100 %></td>
 			</tr>
 			<% end %>
 			*green to buy <br />
 			*orange to sell<br />
-			Best possible profit in the last 24hours: $<%= (@to_buy.buy_price - @to_sell.sell_price).to_f / 100 %>
-
+			Best possible profit in the last 24hours: $<%= ( @to_sell.sell_price - @to_buy.buy_price ).to_f / 100 %>			
 		</table>
 	</div>	
 </div>
