@@ -34,7 +34,9 @@ function drawChart() {
 			</tr>
 			<% end %>
 			*green to buy <br />
-			*orange to sell
+			*orange to sell<br />
+			Best possible profit in the last 24hours: $<%= (@to_buy.buy_price - @to_sell.sell_price).to_f / 100 %>
+
 		</table>
 	</div>	
 </div>
