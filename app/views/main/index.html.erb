@@ -18,14 +18,13 @@ function drawChart() {
 	<div class="col-md-8 col-md-offset-2">
 		<div id="chart_div" style="width: 1000px; height: 400px;"></div>
 
-
 		<table class="table table-hover">
 			<tr>
 				<th>Time</th>
 				<th>Buy price</th>
 				<th>Sell price</th>
 			</tr>
-			<% @bitcoins.each do |bitcoin| %>
+			<% @bitcoins.reverse.each do |bitcoin| %>
 			<tr>
 				<td><%= bitcoin.created_at.strftime("%b %e at %l:%M %p") %></td>
 				<td>$<%= bitcoin.buy_price.to_f / 100 %></td>
