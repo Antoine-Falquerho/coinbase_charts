@@ -6,14 +6,13 @@ function drawChart() {
 
 	var options = {
 		title: 'Company Performance',
-		hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
-		vAxis: {minValue: 0}
-	};
-
+		hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}}		
+	};	
 	var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
 	chart.draw(data, options);
 }
 </script>
+
 
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
