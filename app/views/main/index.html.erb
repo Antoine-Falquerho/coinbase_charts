@@ -33,7 +33,7 @@ function drawChart() {
 			<% end %>
 			*green to buy <br />
 			*orange to sell<br />
-			Best possible profit in the last 24hours: $<%= ( @to_sell.sell_price - @to_buy.buy_price ).to_f / 100 %>			
+			Biggest move in the last 24hours: $<%= ( @to_sell.sell_price - @to_buy.buy_price ).to_f / 100 %>
 		</table>
 	</div>	
 </div>
