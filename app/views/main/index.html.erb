@@ -25,12 +25,16 @@ function drawChart() {
 				<th>Sell price</th>
 			</tr>
 			<% @bitcoins.reverse.each do |bitcoin| %>
-			<tr>
+			<% time_to_buy = 'success' if bitcoin.id == @to_buy.id %>
+			<% time_to_buy = 'warning' if bitcoin.id == @to_sell.id %>
+			<tr class="<%= time_to_buy %>">
 				<td><%= bitcoin.created_at.strftime("%b %e at %l:%M %p") %></td>
 				<td>$<%= bitcoin.buy_price.to_f / 100 %></td>
 				<td>$<%= bitcoin.sell_price.to_f / 100 %></td>
 			</tr>
 			<% end %>
+			*green to buy <br />
+			*orange to sell
 		</table>
-	</div>
+	</div>	
 </div>
