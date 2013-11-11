@@ -1,18 +1,38 @@
-<div id="chart_div" style="width: 1200px; height: 600px;"></div>
-
 <script type="text/javascript">
-  google.load("visualization", "1", {packages:["corechart"]});
-  google.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable(<%= raw @bitcoins %>);
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = google.visualization.arrayToDataTable(<%= raw @chart %>);
 
-    var options = {
-      title: 'Company Performance',
-      hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
-      vAxis: {minValue: 0}
-    };
+	var options = {
+		title: 'Company Performance',
+		hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+		vAxis: {minValue: 0}
+	};
 
-    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-  }
+	var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+	chart.draw(data, options);
+}
 </script>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div id="chart_div" style="width: 1000px; height: 400px;"></div>
+
+
+		<table class="table table-hover">
+			<tr>
+				<th>Time</th>
+				<th>Buy price</th>
+				<th>Sell price</th>
+			</tr>
+			<% @bitcoins.each do |bitcoin| %>
+			<tr>
+				<td><%= bitcoin.created_at.strftime("%b %e at %l:%M %p") %></td>
+				<td>$<%= bitcoin.buy_price.to_f / 100 %></td>
+				<td>$<%= bitcoin.sell_price.to_f / 100 %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
