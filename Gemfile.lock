@@ -42,7 +42,6 @@ GEM
       multi_json (>= 1.3.4)
     erubis (2.7.0)
     execjs (2.0.2)
-    googlecharts (1.6.8)
     hashie (2.0.5)
     hike (1.2.3)
     httparty (0.12.0)
@@ -123,7 +122,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   coinbase
-  googlecharts
   jbuilder (~> 1.2)
   jquery-rails
   pg

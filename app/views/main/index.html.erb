@@ -1,6 +1,18 @@
-<%= image_tag Gchart.line(:size => '800x300', 
-        :title => "Bitcoins Price change",
-        :bg => 'efefef',
-        :legend => ['Buy price', 'Sell price'],
-        :data => @bitcoins) 
-%>
+<div id="chart_div" style="width: 1200px; height: 600px;"></div>
+
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(<%= raw @bitcoins %>);
+
+    var options = {
+      title: 'Company Performance',
+      hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0}
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
