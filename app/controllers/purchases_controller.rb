@@ -8,12 +8,12 @@ class PurchasesController < ApplicationController
   # GET /purchases.json
   def index
     @user = current_user
-    @purchases = @user.purchases.where(is_active: true).all
-    bitcoin_number = @user.purchases.sum(:quantity)
-    bitcoin_value = @user.purchases.sum(:amount)
+    @purchases = @user.purchases.where(is_active: true)
+    bitcoin_number = @purchases.sum(:quantity)
+    bitcoin_value = @purchases.collect{|bitcoin| bitcoin.amount * bitcoin.quantity}.first
 
     @bitcoins = Bitcoin.all.order(:created_at).select(:id, :created_at, :buy_price, :sell_price).where('created_at >= ?', 24.hours.ago)
-    @chart = @bitcoins.collect{|bitcoin| [bitcoin.created_at.strftime('%l:%M %p'), (((bitcoin.sell_price.to_f / 100) * bitcoin_number) - bitcoin_value)]}.insert(0, ['Time', 'Buy amount'])
+    @chart = @bitcoins.collect{|bitcoin| [bitcoin.created_at.strftime('%l:%M %p'), ((bitcoin.sell_price.to_f / 100 * bitcoin_number) - bitcoin_value)]}.insert(0, ['Time', 'Buy amount'])
   end
 
   # GET /purchases/1
