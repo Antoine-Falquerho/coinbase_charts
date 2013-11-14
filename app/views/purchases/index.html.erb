@@ -8,8 +8,7 @@
   <thead>
     <tr>
       <th>Amount</th>
-      <th>Quantity</th>
-      <th>User</th>
+      <th>Quantity</th>      
       <th>Is active</th>
       <th></th>
       <th></th>
@@ -21,12 +20,11 @@
     <% @purchases.each do |purchase| %>
       <tr>
         <td><%= purchase.amount %></td>
-        <td><%= purchase.quantity %></td>
-        <td><%= purchase.user_id %></td>
+        <td><%= purchase.quantity %></td>        
         <td><%= purchase.is_active %></td>
         <td><%= link_to 'Show', [@user, purchase] %></td>
         <td><%= link_to 'Edit', edit_user_purchase_path(@user, purchase) %></td>
-        <td><%= link_to 'Destroy', [@user, purchase], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Destroy', [@user, purchase], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
