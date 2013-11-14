@@ -3,17 +3,18 @@
 <head>
   <title>Bitcoincharts</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>  
+
   <%= csrf_meta_tags %>
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>  
 </head>
 <body>
 
 
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">    
-    <a class="navbar-brand" href="#">Bitcoin Charts</a>    
+  <div class="navbar-header">   
+  <%= link_to 'Bitcoin Charts', root_path, class: 'navbar-brand' %>     
   </div>  
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,7 +31,12 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<%= yield %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <%= yield %>
+  </div>
+</div>
 
 <footer class="footer">
   <address>

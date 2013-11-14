@@ -1,6 +1,11 @@
-<h1>Editing purchase</h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Editing purchase</h1>
 
-<%= render 'form' %>
+		<%= render 'form' %>		
+		<br style='clear:both;'/>
 
-<%= link_to 'Show', [@user, @purchase] %> |
-<%= link_to 'Back', user_purchases_path(@user) %>
+		<%= link_to 'Show', [@user, @purchase] %> |
+		<%= link_to 'Back', user_purchases_path(@user) %>
+	</div>
+</div>

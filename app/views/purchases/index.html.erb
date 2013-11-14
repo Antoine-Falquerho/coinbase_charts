@@ -1,28 +1,10 @@
 <h1>Listing purchases</h1>
+  
+<div id="chart_div" style="width: 1000px; height: 400px;"></div>
 
-<script type="text/javascript">
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  var data = google.visualization.arrayToDataTable(<%= raw @chart %>);
+<%= link_to 'New Purchase', new_user_purchase_path(@user), class: 'btn btn-primary' %>
 
-  var options = {
-    title: 'Company Performance',
-    hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}}    
-  };  
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
-</script>
-
-<div class="row">
-  <div class="col-md-8 col-md-offset-2" style='text-align:center;'>    
-    <div id="chart_div" style="width: 1000px; height: 400px;"></div>
-</div>
-</div>
-
-
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Amount</th>
@@ -52,4 +34,19 @@ function drawChart() {
 
 <br>
 
-<%= link_to 'New Purchase', new_user_purchase_path(@user) %>
+<script type="text/javascript">
+$( document ).ready(function() {
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(<%= raw @chart %>);
+
+  var options = {
+    title: 'Company Performance',
+    hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}}    
+  };  
+  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+}
+</script>
