@@ -13,7 +13,6 @@ function drawChart() {
 }
 </script>
 
-
 <div class="row">
 	<div class="col-md-8 col-md-offset-2" style='text-align:center;'>
 		<h1>Bitcoin Movement in the last 24hours</h1>
@@ -32,7 +31,7 @@ function drawChart() {
 				<td style="<%= 'background-color:#DFF0D8;' if bitcoin.id == @to_sell.id %>">$<%= bitcoin.sell_price.to_f / 100 %></td>
 			</tr>
 			<% end %>			
-			Biggest move in the last 24hours: $<%= ( @to_sell.sell_price - @to_buy.buy_price ).to_f / 100 %>
+			Biggest move in the last 24hours: $<%= ( @to_sell.sell_price - @to_buy.buy_price ).to_f / 100 if @to_sell and @to_buy %>
 		</table>
 	</div>	
 </div>
