@@ -72,7 +72,7 @@ class PurchasesController < ApplicationController
     end
 
     def is_the_current_user?
-      redirect_to root_path and return if current_user != User.find(params[:user_id])
+      redirect_to root_path, flash: {alert: 'You have to be logged in!'} and return if current_user != User.find(params[:user_id])
     end
   end
 

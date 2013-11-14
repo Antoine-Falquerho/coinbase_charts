@@ -28,8 +28,11 @@
   </div><!-- /.navbar-collapse -->
 </nav>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% if notice %>
+  <p class="bs-callout bs-callout-info"><%= notice %></p>
+<% elsif alert %>
+  <p class="bs-callout bs-callout-danger"><%= alert %></p>
+<% end %>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
@@ -57,6 +60,7 @@
   text-align: center;
   margin-bottom: 50px;
 } 
+/*.alert{text-align: center;font-weight:bold;}*/
 </style>
 </body>
 </html>
