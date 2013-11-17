@@ -9,7 +9,8 @@
   <thead>
     <tr>
       <th>Amount</th>
-      <th>Quantity</th>      
+      <th>Quantity</th>
+      <th>Outcome</th>
       <th>Is active</th>
       <th></th>
       <th></th>
@@ -21,7 +22,8 @@
     <% @purchases.each do |purchase| %>
       <tr>
         <td><%= purchase.amount %></td>
-        <td><%= purchase.quantity %></td>        
+        <td><%= purchase.quantity %></td>  
+        <td><%= (current_price.sell_price / 100  - purchase.amount).round(3) %></td>      
         <td><%= purchase.is_active %></td>
         <td><%= link_to 'Show', [@user, purchase] %></td>
         <td><%= link_to 'Edit', edit_user_purchase_path(@user, purchase) %></td>
